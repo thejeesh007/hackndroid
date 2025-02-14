@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #87a389;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #2d2d2d;
+            margin-bottom: 20px;
+        }
+
+        /* Date Picker */
+        .date-picker {
+            background: #d1e0c8;
+            padding: 10px;
+            display: inline-block;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .date-picker img {
+            width: 20px;
+            vertical-align: middle;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: #eee;
+            border-radius: 20px;
+            height: 20px;
+            width: 100%;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 20px;
+            background: #76c893;
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        /* Meal Entry Buttons */
+        .meal-btn {
+            background: #b6d7a8;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meal-btn:hover {
+            background: #8fbc8f;
+        }
+
+        .meal-btn img {
+            width: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer img {
+            width: 30px;
+            cursor: pointer;
+        }
+
+        /* Calendar Popup */
+        #calendar {
+            display: none;
+            position: absolute;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        #calendar input {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Food Tracker</h2>
+
+        <!-- Date Picker -->
+        <div class="date-picker" onclick="toggleCalendar()">
+            <span id="selectedDate">Select Date</span>
+            <img src="https://img.icons8.com/ios-filled/50/calendar.png" alt="Calendar Icon">
+        </div>
+        
+        <!-- Calendar Popup -->
+        <div id="calendar">
+            <input type="date" id="dateInput" onchange="setDate()">
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <p><span id="calories">0</span> kcal</p>
+
+        <!-- Meal Entry Buttons -->
+        <button class="meal-btn" onclick="addCalories(300)">
+            <span>Enter Breakfast</span>
+            <img src="https://img.icons8.com/ios-filled/50/apple.png" alt="Food Icon">
+        </button>
+
+        <button class="meal-btn" onclick="addCalories(500)">
+            <span>Enter Lunch</span>
+            <img src="https://img.icons8.com/ios-filled/50/bowl-with-spoon.png" alt="Food Icon">
+        </button>
+
+        <button class="meal-btn" onclick="addCalories(200)">
+            <span>Enter Snacks</span>
+            <img src="https://img.icons8.com/ios-filled/50/donut.png" alt="Food Icon">
+        </button>
+
+        <button class="meal-btn" onclick="addCalories(700)">
+            <span>Enter Dinner</span>
+            <img src="https://img.icons8.com/ios-filled/50/pizza.png" alt="Food Icon">
+        </button>
+    </div>
+
+    <!-- Footer Icons -->
+    <div class="footer">
+        <img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home Icon">
+        <img src="https://img.icons8.com/ios-filled/50/shop.png" alt="Shop Icon">
+    </div>
+
+    <script>
+        let totalCalories = 0;
+        const calorieGoal = 3000;
+
+        function addCalories(amount) {
+            totalCalories += amount;
+            if (totalCalories > calorieGoal) {
+                totalCalories = calorieGoal;
+            }
+            document.getElementById("calories").innerText = totalCalories;
+            let progress = (totalCalories / calorieGoal) * 100;
+            document.getElementById("progressBar").style.width = progress + "%";
+        }
+
+        function toggleCalendar() {
+            const calendar = document.getElementById("calendar");
+            calendar.style.display = (calendar.style.display === "block") ? "none" : "block";
+        }
+
+        function setDate() {
+            const date = document.getElementById("dateInput").value;
+            document.getElementById("selectedDate").innerText = date;
+            document.getElementById("calendar").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

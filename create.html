@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #7A9C7D;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #5D1B1B;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            color: #5D1B1B;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-field {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid #7A9C7D;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .input-field input {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding-left: 10px;
+        }
+
+        .input-field img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #6C8C6E;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #5A7B5F;
+        }
+
+        .login-link {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #5D1B1B;
+        }
+
+        .login-link a {
+            color: #6C8C6E;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 400px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <form id="signupForm">
+            <h2>Create an Account</h2>
+
+            <div class="input-group">
+                <label>First Name</label>
+                <div class="input-field">
+                    <input type="text" id="firstName" placeholder="Enter your first name">
+                    <img src="https://img.icons8.com/ios-filled/50/user.png" alt="User Icon">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Last Name</label>
+                <div class="input-field">
+                    <input type="text" id="lastName" placeholder="Enter your last name">
+                    <img src="https://img.icons8.com/ios-filled/50/conference-call.png" alt="Group Icon">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Email</label>
+                <div class="input-field">
+                    <input type="email" id="email" placeholder="Enter your email">
+                    <img src="https://img.icons8.com/ios-filled/50/new-post.png" alt="Email Icon">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <div class="input-field">
+                    <input type="password" id="password" placeholder="Enter your password">
+                    <img src="https://img.icons8.com/ios-filled/50/lock.png" alt="Lock Icon">
+                </div>
+            </div>
+            <a href="details.html"><button type="submit" class="btn">Create</button></a>
+
+            <p class="login-link">Already have an account? <a href="#">Login</a></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let firstName = document.getElementById("firstName").value.trim();
+            let lastName = document.getElementById("lastName").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            if (firstName === "" || lastName === "" || email === "" || password === "") {
+                alert("All fields are required!");
+                return;
+            }
+
+            alert("Account created successfully!");
+            this.reset();
+            window.location.href = "details.html";
+        });
+    </script>
+
+</body>
+</html>

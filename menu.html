@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #87A98D;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container */
+        .home-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Quote Section */
+        .quote-box {
+            background-color: #D6E5C3;
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #222;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .quote-box span {
+            color: #4A9F50;
+        }
+
+        /* Grid Menu */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .grid-item {
+            background-color: #E4EEDB;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .grid-item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        .bottom-nav button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .bottom-nav img {
+            width: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="home-container">
+        <!-- Quote Section -->
+        <div class="quote-box">
+            <p><i>Better <span>health</span>,<br> better <span>life</span>.</i></p>
+        </div>
+
+        <!-- Grid Menu -->
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="https://img.icons8.com/ios-filled/50/sleeping.png" alt="Sleep">
+                <p>Your Sleep</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://img.icons8.com/?size=100&id=74239&format=png&color=000000" alt="Fitness">
+                <p>Your Fitness</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://img.icons8.com/ios-filled/50/stethoscope.png" alt="Health Assistant">
+                <p>Health Assistant</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://img.icons8.com/ios-filled/50/hamburger.png" alt="Diet">
+                <p>Your Diet</p>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <button onclick="goToHome()"><img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home" class="nav-icon"></button>
+            <button onclick="gotoMenu()"><img src="https://img.icons8.com/?size=100&id=80105&format=png&color=000000" alt="Activity" class="nav-icon"></button>
+        </div>
+    </div>
+    <script>
+        function goToHome() {
+            window.location.href = "home.html"; // Change this to your actual home page
+        }
+        function gotoMenu(){
+            window.location.href = "menu.html";
+        }
+    </script>
+</body>
+</html>

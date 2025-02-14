@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Tracker</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #87A98D;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container */
+        .sleep-container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Title */
+        h2 {
+            text-align: left;
+            color: #000;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        /* Date Input */
+        .date-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #E4EEDB;
+            padding: 10px;
+            border-radius: 10px;
+            width: 200px;
+            margin: auto;
+        }
+
+        .date-box img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Sleep Graph */
+        .sleep-chart {
+            margin-top: 40px;
+        }
+
+        .chart-box {
+            background-color: #E4EEDB;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .chart-box img {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sleep-container">
+        <!-- Title -->
+        <h2>Sleep Tracker</h2>
+
+        <!-- Date Input -->
+        <div class="date-box">
+            <span id="currentDate">14/2/2025</span>
+            <img src="https://img.icons8.com/ios-filled/50/calendar.png" alt="Calendar Icon">
+        </div>
+
+        <!-- Sleep Chart -->
+        <div class="sleep-chart">
+            <div class="chart-box">
+                <img src="https://img.icons8.com/ios-filled/100/speedometer.png" alt="Sleep Chart">
+                <p>Hours Slept <b>13</b></p>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home" class="nav-icon">
+            <img src="https://img.icons8.com/ios-filled/50/clipboard-list.png" alt="Activity" class="nav-icon">
+        </div>
+    </div>
+
+</body>
+</html>

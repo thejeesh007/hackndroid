@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snacks Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #87a389;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #2d2d2d;
+            margin-bottom: 20px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: #eee;
+            border-radius: 20px;
+            height: 20px;
+            width: 100%;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 20px;
+            background: #76c893;
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        /* Snack Buttons */
+        .snack-btn {
+            background: #b6d7a8;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+
+        .snack-btn:hover {
+            background: #8fbc8f;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer img {
+            width: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Snacks</h2>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <p><span id="calories">0</span> kcal</p>
+
+        <!-- Snack Options -->
+        <button class="snack-btn" onclick="addCalories(350)">
+            <span>Samosa (2)</span>
+            <span>350 kcal</span>
+        </button>
+
+        <button class="snack-btn" onclick="addCalories(40)">
+            <span>Bowl of Fruits</span>
+            <span>40 kcal</span>
+        </button>
+
+        <button class="snack-btn" onclick="addCalories(200)">
+            <span>Egg Puffs (1)</span>
+            <span>200 kcal</span>
+        </button>
+
+        <button class="snack-btn" onclick="addCalories(250)">
+            <span>Cutlets</span>
+            <span>250 kcal</span>
+        </button>
+
+        <button class="snack-btn" onclick="addCalories(150)">
+            <span>Poha With Milk</span>
+            <span>150 kcal</span>
+        </button>
+    </div>
+
+    <!-- Footer Icons -->
+    <div class="footer">
+        <img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home Icon">
+        <img src="https://img.icons8.com/ios-filled/50/shop.png" alt="Shop Icon">
+    </div>
+
+    <script>
+        let totalCalories = 0;
+        const calorieGoal = 2000; // Set daily limit
+
+        function addCalories(amount) {
+            totalCalories += amount;
+            if (totalCalories > calorieGoal) {
+                totalCalories = calorieGoal;
+            }
+            document.getElementById("calories").innerText = totalCalories;
+            let progress = (totalCalories / calorieGoal) * 100;
+            document.getElementById("progressBar").style.width = progress + "%";
+        }
+    </script>
+
+</body>
+</html>

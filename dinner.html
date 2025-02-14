@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinner Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #87a389;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #2d2d2d;
+            margin-bottom: 20px;
+        }
+
+        /* Dinner Item Buttons */
+        .dinner-btn {
+            background: #b6d7a8;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+
+        .dinner-btn:hover {
+            background: #8fbc8f;
+        }
+
+        /* Total Calories Display */
+        .total-calories {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer img {
+            width: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Dinner</h2>
+
+        <!-- Dinner Options -->
+        <button class="dinner-btn" onclick="addCalories(350)">
+            <span>Idly With Sambar</span>
+            <span>350 kcal</span>
+        </button>
+
+        <button class="dinner-btn" onclick="addCalories(300)">
+            <span>Dosa With Sambar</span>
+            <span>300 kcal</span>
+        </button>
+
+        <button class="dinner-btn" onclick="addCalories(700)">
+            <span>Poori With Potato</span>
+            <span>700 kcal</span>
+        </button>
+
+        <button class="dinner-btn" onclick="addCalories(200)">
+            <span>Rice with Rasam</span>
+            <span>200 kcal</span>
+        </button>
+
+        <button class="dinner-btn" onclick="addCalories(250)">
+            <span>Upma with Chutney</span>
+            <span>250 kcal</span>
+        </button>
+
+        <!-- Total Calories Display -->
+        <p class="total-calories">Total: <span id="totalCalories">0</span> kcal</p>
+
+        <button class="dinner-btn" style="background: #76c893; color: white;" onclick="measureCalories()">
+            Measure Total Calories
+        </button>
+    </div>
+
+    <!-- Footer Icons -->
+    <div class="footer">
+        <img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home Icon">
+        <img src="https://img.icons8.com/ios-filled/50/shop.png" alt="Shop Icon">
+    </div>
+
+    <script>
+        let totalCalories = 0;
+
+        function addCalories(amount) {
+            totalCalories += amount;
+            document.getElementById("totalCalories").innerText = totalCalories;
+        }
+
+        function measureCalories() {
+            alert("Total Calories Consumed: " + totalCalories + " kcal");
+        }
+    </script>
+
+</body>
+</html>
