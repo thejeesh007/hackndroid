@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Dashboard - HealthHub</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="fitness_styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i data-lucide="brain"></i>
+                <span>HealthHub</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="login-link">
+                    <i data-lucide="home"></i>
+                    Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Your Fitness Dashboard</h1>
+            <p id="lastUpdated"></p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Progress Overview -->
+            <div class="dashboard-card">
+                <h3><i data-lucide="activity"></i> Today's Progress</h3>
+                <div class="progress-stats">
+                    <div class="stat">
+                        <span class="stat-value" id="caloriesBurned">0</span>
+                        <span class="stat-label">Calories Burned</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="workoutMinutes">0</span>
+                        <span class="stat-label">Minutes Active</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="workoutsCompleted">0</span>
+                        <span class="stat-label">Workouts Done</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly Progress Chart -->
+            <div class="dashboard-card">
+                <h3><i data-lucide="bar-chart"></i> Weekly Progress</h3>
+                <div class="chart-container">
+                    <canvas id="weeklyProgressChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Today's Workout -->
+            <div class="dashboard-card">
+                <h3><i data-lucide="dumbbell"></i> Today's Workout</h3>
+                <div id="workoutPlan">
+                    <div class="workout-exercise">
+                        <span class="exercise-name">Loading workout plan...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="dashboard-card">
+                <h3><i data-lucide="trending-up"></i> Performance Metrics</h3>
+                <div class="metrics-grid" id="performanceMetrics">
+                    <!-- Metrics will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Simulate loading user's fitness profile
+        const fitnessProfile = JSON.parse(localStorage.getItem('fitnessProfile') || '{}');
+
+        // Update last updated time
+        document.getElementById('lastUpdated').textContent = `Last updated: ${new Date().toLocaleString()}`;
+
+        // Simulate progress data
+        const updateProgress = () => {
+            document.getElementById('caloriesBurned').textContent = Math.floor(Math.random() * 500 + 200);
+            document.getElementById('workoutMinutes').textContent = Math.floor(Math.random() * 60 + 30);
+            document.getElementById('workoutsCompleted').textContent = Math.floor(Math.random() * 3 + 1);
+        };
+
+        // Weekly Progress Chart
+        const ctx = document.getElementById('weeklyProgressChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Calories Burned',
+                    data: Array.from({length: 7}, () => Math.floor(Math.random() * 500 + 200)),
+                    backgroundColor: '#0284c7'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 1000 // Set a reasonable maximum value
+                    }
+                }
+            }
+        });
+
+        // Simulate workout plan
+        const workouts = [
+            { name: 'Warm-up', duration: '10 mins', type: 'cardio' },
+            { name: 'Push-ups', sets: '3x12', type: 'strength' },
+            { name: 'Squats', sets: '3x15', type: 'strength' },
+            { name: 'Plank', duration: '60 sec', type: 'core' },
+            { name: 'Cool-down', duration: '5 mins', type: 'stretching' }
+        ];
+
+        const workoutPlan = document.getElementById('workoutPlan');
+        workoutPlan.innerHTML = workouts.map(workout => `
+            <div class="workout-exercise">
+                <span class="exercise-name">${workout.name}</span>
+                <span class="exercise-detail">${workout.sets || workout.duration}</span>
+            </div>
+        `).join('');
+
+        // Simulate performance metrics
+        const metrics = [
+            { name: 'Strength', value: '75%', trend: 'up' },
+            { name: 'Endurance', value: '68%', trend: 'up' },
+            { name: 'Flexibility', value: '60%', trend: 'stable' },
+            { name: 'Recovery', value: '82%', trend: 'up' }
+        ];
+
+        const metricsContainer = document.getElementById('performanceMetrics');
+        metricsContainer.innerHTML = metrics.map(metric => `
+            <div class="metric">
+                <span class="metric-name">${metric.name}</span>
+                <span class="metric-value">${metric.value}</span>
+                <i data-lucide="trending-${metric.trend}" class="trend-${metric.trend}"></i>
+            </div>
+        `).join('');
+
+        // Initialize data
+        updateProgress();
+        lucide.createIcons();
+
+        // Simulate real-time updates
+        setInterval(updateProgress, 30000);
+    </script>
+</body>
+</html>
