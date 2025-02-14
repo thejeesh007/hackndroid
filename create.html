@@ -10,29 +10,63 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
+        /* 🔥 Animated Background with Floating Icons */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #7A9C7D;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #e0f7fa, #b3e5fc, #e3f2fd, #b2dfdb);
+            background-size: 300% 300%;
+            animation: gradientBG 10s infinite ease-in-out;
+            position: relative;
         }
 
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 🔥 Floating Icons */
+        .floating-icon {
+            position: absolute;
+            width: 60px;
+            opacity: 0.7;
+            animation: floatAnimation 6s infinite alternate ease-in-out;
+        }
+
+        .icon1 { top: 10%; left: 15%; animation-delay: 0s; }
+        .icon2 { top: 40%; right: 10%; animation-delay: 1s; }
+        .icon3 { bottom: 10%; left: 50%; animation-delay: 2s; }
+        .icon4 { bottom: 30%; right: 20%; animation-delay: 3s; }
+        .icon5 { top: 70%; left: 10%; animation-delay: 4s; }
+
+        @keyframes floatAnimation {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-15px) scale(1.1); }
+        }
+
+        /* 🔥 Glassmorphic Container */
         .container {
-            background: white;
+            background: rgba(255, 255, 255, 0.25);
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 380px;
             text-align: center;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         h2 {
-            color: #5D1B1B;
-            margin-bottom: 20px;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 24px;
         }
 
         .input-group {
@@ -42,7 +76,7 @@
 
         .input-group label {
             font-weight: bold;
-            color: #5D1B1B;
+            color: #333;
             display: block;
             margin-bottom: 5px;
         }
@@ -50,55 +84,67 @@
         .input-field {
             display: flex;
             align-items: center;
-            background: #fff;
-            border: 1px solid #7A9C7D;
-            border-radius: 5px;
-            padding: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 12px;
+            transition: 0.3s;
         }
 
         .input-field input {
             width: 100%;
             border: none;
-            outline: none;
+            background: transparent;
+            color: #333;
             font-size: 16px;
-            padding-left: 10px;
         }
 
         .input-field img {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
+            opacity: 0.8;
+        }
+
+        .input-field:focus-within {
+            border-color: #3498db;
+            box-shadow: 0 0 12px #3498db;
         }
 
         .btn {
             width: 100%;
             padding: 12px;
-            background: #6C8C6E;
+            background: #3498db;
             color: white;
             border: none;
             font-size: 16px;
-            border-radius: 5px;
+            font-weight: bold;
+            border-radius: 8px;
             cursor: pointer;
             transition: 0.3s;
         }
 
         .btn:hover {
-            background: #5A7B5F;
+            background: #2980b9;
+            transform: scale(1.05);
         }
 
         .login-link {
             margin-top: 10px;
             font-size: 14px;
-            color: #5D1B1B;
+            color: #333;
         }
 
         .login-link a {
-            color: #6C8C6E;
+            color: #3498db;
             text-decoration: none;
             font-weight: bold;
         }
 
-        /* Responsive Design */
-        @media (max-width: 400px) {
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 420px) {
             .container {
                 width: 90%;
                 padding: 20px;
@@ -107,6 +153,13 @@
     </style>
 </head>
 <body>
+
+    <!-- Floating Icons for Animation -->
+    <img src="https://img.icons8.com/ios/100/apple.png" class="floating-icon icon1">
+    <img src="https://img.icons8.com/ios/100/dumbbell.png" class="floating-icon icon2">
+    <img src="https://img.icons8.com/ios/100/water-bottle.png" class="floating-icon icon3">
+    <img src="https://img.icons8.com/ios/100/salad.png" class="floating-icon icon4">
+    <img src="https://img.icons8.com/ios/100/treadmill.png" class="floating-icon icon5">
 
     <div class="container">
         <form id="signupForm">
@@ -143,7 +196,8 @@
                     <img src="https://img.icons8.com/ios-filled/50/lock.png" alt="Lock Icon">
                 </div>
             </div>
-            <a href="details.html"><button type="submit" class="btn">Create</button></a>
+
+            <button type="submit" class="btn">Create</button>
 
             <p class="login-link">Already have an account? <a href="#">Login</a></p>
         </form>
@@ -153,13 +207,11 @@
         document.getElementById("signupForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
-            let firstName = document.getElementById("firstName").value.trim();
-            let lastName = document.getElementById("lastName").value.trim();
-            let email = document.getElementById("email").value.trim();
             let password = document.getElementById("password").value.trim();
+            let passwordRegex = /^(?=.*[A-Z])(?=.*\d).{7,}$/;
 
-            if (firstName === "" || lastName === "" || email === "" || password === "") {
-                alert("All fields are required!");
+            if (!passwordRegex.test(password)) {
+                alert("Password must be at least 7 characters, include one uppercase letter and one number.");
                 return;
             }
 
