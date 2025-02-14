@@ -10,119 +10,171 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Lato', sans-serif;
         }
 
+        /* 🔥 Animated Background */
         body {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #7A9C7D;
+            background: linear-gradient(-45deg, #e0f7fa, #b3e5fc, #e3f2fd, #b2dfdb);
+            background-size: 300% 300%;
+            animation: gradientBG 10s infinite ease-in-out;
+            width: 100%;
+            padding: 20px;
         }
 
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 🔥 Floating Icons */
+        .floating-icon {
+            position: absolute;
+            width: 80px;
+            opacity: 0.6;
+            animation: floatAnimation 6s infinite alternate ease-in-out;
+        }
+
+        .icon1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .icon2 { top: 40%; right: 15%; animation-delay: 1s; }
+        .icon3 { bottom: 15%; left: 50%; animation-delay: 2s; }
+        .icon4 { bottom: 35%; right: 20%; animation-delay: 3s; }
+        .icon5 { top: 70%; left: 15%; animation-delay: 4s; }
+
+        @keyframes floatAnimation {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-15px) scale(1.1); }
+        }
+
+        /* 🔥 Glassmorphic Container */
         .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 350px;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+            width: 480px;
             text-align: center;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         h2 {
-            color: #5D1B1B;
+            color: #333;
             margin-bottom: 20px;
+            font-size: 26px;
         }
 
         .input-group {
             text-align: left;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .input-group label {
             font-weight: bold;
-            color: #5D1B1B;
+            color: #333;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
+            font-size: 16px;
         }
 
         .input-field {
             display: flex;
             align-items: center;
-            background: #fff;
-            border: 1px solid #7A9C7D;
-            border-radius: 5px;
-            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 14px;
+            transition: 0.3s;
+            font-size: 16px;
         }
 
         .input-field input {
             width: 100%;
             border: none;
-            outline: none;
-            font-size: 16px;
+            background: transparent;
+            color: #333;
+            font-size: 18px;
             padding-left: 10px;
         }
 
         .input-field img {
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
+            opacity: 0.8;
+        }
+
+        .input-field:focus-within {
+            border-color: #3498db;
+            box-shadow: 0 0 15px #3498db;
         }
 
         .btn {
             width: 100%;
-            padding: 12px;
-            background: #6C8C6E;
+            padding: 14px;
+            background: #3498db;
             color: white;
             border: none;
-            font-size: 16px;
-            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
             cursor: pointer;
             transition: 0.3s;
+            margin-top: 10px;
         }
 
         .btn:hover {
-            background: #5A7B5F;
+            background: #2980b9;
+            transform: scale(1.05);
         }
 
-        /* Bottom Navigation */
+        /* 🔥 Bottom Navigation */
         .bottom-nav {
-            margin-top: 20px;
+            margin-top: 25px;
             display: flex;
             justify-content: center;
             background: white;
-            padding: 10px;
-            border-radius: 30px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            gap: 20px;
+            padding: 12px;
+            border-radius: 35px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            gap: 25px;
         }
 
         .bottom-nav img {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             cursor: pointer;
         }
 
-        /* Responsive Design */
-        @media (max-width: 400px) {
+        @media (max-width: 500px) {
             .container {
                 width: 90%;
-                padding: 20px;
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Floating Icons -->
+    <img src="https://img.icons8.com/ios/100/ruler.png" class="floating-icon icon1">
+    <img src="https://img.icons8.com/ios/100/weight.png" class="floating-icon icon2">
+    <img src="https://img.icons8.com/ios/100/apple.png" class="floating-icon icon3">
+    <img src="https://img.icons8.com/ios/100/water-bottle.png" class="floating-icon icon4">
+    <img src="https://img.icons8.com/ios/100/treadmill.png" class="floating-icon icon5">
+
     <div class="container">
         <form id="detailsForm">
-            <h2>Enter your Details</h2>
+            <h2>Enter Your Details</h2>
 
             <div class="input-group">
                 <label>Height</label>
                 <div class="input-field">
-                    <input type="text" id="height" placeholder="Enter your height (in ft)">
+                    <input type="text" id="height" placeholder="Enter height (in ft)">
                     <img src="https://img.icons8.com/ios-filled/50/ruler.png" alt="Height Icon">
                 </div>
             </div>
@@ -130,7 +182,7 @@
             <div class="input-group">
                 <label>Weight</label>
                 <div class="input-field">
-                    <input type="text" id="weight" placeholder="Enter your weight (in kg)">
+                    <input type="text" id="weight" placeholder="Enter weight (in kg)">
                     <img src="https://img.icons8.com/ios-filled/50/weight.png" alt="Weight Icon">
                 </div>
             </div>
@@ -138,7 +190,7 @@
             <div class="input-group">
                 <label>Age</label>
                 <div class="input-field">
-                    <input type="number" id="age" placeholder="Enter your age">
+                    <input type="number" id="age" placeholder="Enter age">
                     <img src="https://img.icons8.com/ios-filled/50/calendar.png" alt="Age Icon">
                 </div>
             </div>
@@ -146,31 +198,24 @@
             <div class="input-group">
                 <label>Phone</label>
                 <div class="input-field">
-                    <input type="tel" id="phone" placeholder="Enter your phone number">
+                    <input type="tel" id="phone" placeholder="Enter phone number" maxlength="10">
                     <img src="https://img.icons8.com/ios-filled/50/phone.png" alt="Phone Icon">
                 </div>
             </div>
-            <a href="login.html"><button type="submit" class="btn">Done</button></a>
-            
-        </form>
-    </div>
 
-    <div class="bottom-nav">
-        <img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home">
-        <img src="https://img.icons8.com/ios-filled/50/shopping-cart.png" alt="Cart">
+            <button type="submit" class="btn">Done</button>
+        </form>
     </div>
 
     <script>
         document.getElementById("detailsForm").addEventListener("submit", function(event) {
             event.preventDefault();
-
-            let height = document.getElementById("height").value.trim();
-            let weight = document.getElementById("weight").value.trim();
-            let age = document.getElementById("age").value.trim();
+            
             let phone = document.getElementById("phone").value.trim();
+            let phoneRegex = /^[0-9]{10}$/;
 
-            if (height === "" || weight === "" || age === "" || phone === "") {
-                alert("All fields are required!");
+            if (!phoneRegex.test(phone)) {
+                alert("Phone number must be exactly 10 digits and contain only numbers.");
                 return;
             }
 
