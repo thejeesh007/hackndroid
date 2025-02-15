@@ -5,7 +5,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Your Fitness Profile - HealthHub</title>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="fitness_styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #e0f2fe;
+            min-height: 100vh;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            overflow: hidden;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 10;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            height: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #0284c7;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .login-link {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #4b5563;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .login-link:hover {
+            color: #0284c7;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 100px auto 40px;
+            padding: 2rem;
+        }
+
+        .fitness-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .fitness-form h2 {
+            color: #0284c7;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4b5563;
+            font-weight: 500;
+        }
+
+        .form-group select,
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: normal;
+        }
+
+        .primary-button {
+            background-color: #0284c7;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .primary-button:hover {
+            background-color: #0369a1;
+        }
+
+        @media (max-width: 768px) {
+            .fitness-form h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -108,10 +246,8 @@
     </div>
 
     <script>
-        // Initialize Lucide icons
         lucide.createIcons();
 
-        // Duration slider
         const durationSlider = document.getElementById('duration');
         const durationValue = document.getElementById('durationValue');
         
@@ -119,11 +255,9 @@
             durationValue.textContent = `${e.target.value} minutes`;
         });
 
-        // Form submission
         document.getElementById('fitnessForm').addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Collect form data
             const formData = {
                 fitnessLevel: document.getElementById('fitnessLevel').value,
                 goal: document.getElementById('goal').value,
@@ -135,11 +269,9 @@
                 conditions: document.getElementById('conditions').value
             };
 
-            // Store in localStorage for now (in a real app, this would go to a backend)
             localStorage.setItem('fitnessProfile', JSON.stringify(formData));
             
-            // Redirect to dashboard
-            window.location.href = 'dashboard.html';
+            window.location.href = 'fitness_dash.html';
         });
     </script>
 </body>
