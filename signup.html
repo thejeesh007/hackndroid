@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create an Account</title>
+    <title>HealthHub - Create an Account</title>
     <style>
         /* General Styles */
         * {
@@ -199,41 +199,64 @@
     <img src="https://img.icons8.com/ios/100/treadmill.png" class="floating-icon icon5">
 
     <div class="container">
-        <form id="signupForm">
-            <h2>Create an Account</h2>
+        <form id="signupForm" action="/signup" method="POST">
+            <h2>Join HealthHub</h2>
 
             <!-- Profile Picture Upload -->
             <div class="profile-container">
                 <img src="https://img.icons8.com/ios-filled/100/user.png" class="profile-pic" id="profilePic">
-                <input type="file" id="fileInput" hidden>
+                <input type="file" id="fileInput" name="profile_picture" hidden>
                 <button type="button" class="upload-btn" onclick="document.getElementById('fileInput').click()">Upload Photo</button>
             </div>
 
             <div class="input-group">
                 <label>First Name</label>
                 <div class="input-field">
-                    <input type="text" placeholder="Enter your first name">
+                    <input type="text" name="first_name" placeholder="Enter your first name" required>
                 </div>
             </div>
 
             <div class="input-group">
                 <label>Email</label>
                 <div class="input-field">
-                    <input type="email" placeholder="Enter your email">
+                    <input type="email" name="email" placeholder="Enter your email" required>
                 </div>
             </div>
 
             <div class="input-group">
                 <label>Password</label>
                 <div class="input-field">
-                    <input type="password" placeholder="Enter your password">
+                    <input type="password" name="password" placeholder="Enter your password" required>
                 </div>
             </div>
 
             <button type="submit" class="btn">Create Account</button>
 
-            <p class="login-link">Already have an account? <a href="#">Login</a></p>
+            <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
         </form>
     </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Here you would typically send the form data to the server
+            // For demonstration, we're using an alert
+            alert("Account created successfully! Please log in.");
+            window.location.href = "login.html";
+        });
+
+        // Profile picture preview
+        document.getElementById("fileInput").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById("profilePic").src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
 </html>
