@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -214,6 +215,7 @@
             </div>
           </div>
         </div>
+        
         <div class="dish-card" style="width: 100%;">
           <div class="dish-card-body" style="text-align: center;">
             <button class="dish-card-button" style="background-color: #3674B5;" onclick="measureCalories()">
@@ -222,6 +224,15 @@
           </div>
         </div>
       </div>
+      <div class="footer">
+        <button onclick="gotohome()">
+          <a href="food.html"><img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home Icon"/></a>
+        </button>
+        <!--
+        <button onclick="gotomenu()">
+          <img src="https://img.icons8.com/ios-filled/50/shop.png" alt="Shop Icon"/>
+        </button>-->
+    </div>
     <script>
         let totalCalories = 0;
         function addCalories(amount) {
