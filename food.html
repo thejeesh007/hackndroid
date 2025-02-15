@@ -11,223 +11,141 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-
         body {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #e0f7fa, #b3e5fc, #e3f2fd, #b2dfdb);
-            background-size: 400% 400%;
-            animation: gradientBG 12s infinite ease-in-out;
-            position: relative;
+            background: #f5f5f5;
             padding: 20px;
         }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .floating-icon {
-            position: absolute;
-            width: 60px;
-            opacity: 0.7;
-            animation: floatAnimation 6s infinite alternate ease-in-out;
-            z-index: 0;
-        }
-        .icon1 { top: 8%;  left: 10%; animation-delay: 0s; }
-        .icon2 { top: 42%; right: 8%;  animation-delay: 1s; }
-        .icon3 { bottom: 12%; left: 45%; animation-delay: 2s; }
-        .icon4 { bottom: 28%; right: 18%; animation-delay: 3s; }
-        .icon5 { top: 68%; left: 8%;  animation-delay: 4s; }
-        @keyframes floatAnimation {
-            0% { transform: translateY(0px) scale(1); }
-            100% { transform: translateY(-20px) scale(1.1); }
-        }
         .title {
-            margin-top: 40px;
+            font-size: 2rem;
             margin-bottom: 20px;
-            font-size: 2.5rem;
             color: #333;
-            z-index: 1;
-            text-align: center;
         }
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;            
-            z-index: 1;           
             width: 100%;
-            max-width: 1200px;    
-            justify-content: center;
+            max-width: 400px;
+            text-align: center;
         }
         input[type="date"] {
-            font-family: 'Poppins', sans-serif;
             padding: 10px;
             font-size: 16px;
-            border: 2px solid #007bff;
-            border-radius: 8px;
-            background-color: #f8f9fa;
-            color: #333;
-            outline: none;
-            cursor: pointer;
-        }
-        input[type="date"]:hover {
-            border-color: #0056b3;
-        }
-        input[type="date"]:focus {
-            border-color: #ff5722;
-            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 15px;
         }
         .progress-container {
-            background: #eee;
-            border-radius: 20px;
-            height: 20px;
+            background: #ddd;
+            border-radius: 10px;
+            height: 15px;
             width: 100%;
+            margin: 10px 0;
             position: relative;
-            margin: 20px 0;
         }
         .progress-bar {
             height: 100%;
-            border-radius: 20px;
-            background: #3674B5;
+            border-radius: 10px;
+            background: #4caf50;
             width: 0%;
             transition: width 0.5s;
         }
         .meal-btn {
-            background-color: #A1E3F9;
-            width: 280px;             
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            overflow: hidden;         
-            display: flex;
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0;
             border: none;
-            flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 5px;
+            background: #2196F3;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            padding-left: 15px;
         }
         .meal-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            cursor: pointer;
+            background: #1976D2;
         }
-        .meal-btn span{
-            padding: 0.3rem;
+        .meal-btn img {
+            width: 24px;
+            height: 24px;
         }
-        .meal-btn img{
-            width: 20px;
-            height: 20px;
-            object-fit: fill;
-            display: block;
-            margin-left: 15rem;
-            margin-bottom: 10px;
+        .message {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .warning {
+            color: #d32f2f;
+        }
+        .healthy {
+            color: #388e3c;
         }
         .footer {
             margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 100px;
         }
-        .footer button {
-            background: none;
-            border: none;
-            padding: 30px;
-        }
-        .footer img {
+        .footer a img {
             width: 30px;
-            cursor: pointer;
-        }
-        .message {
-            font-size: 15px;
-            font-weight: bold;
-            text-align: center;
-            margin-top: -0.4rem;
-        }
-        .warning {
-            color: #ff4d4d;
-        }
-
-        .healthy {
-            color: #2d7d2d;
         }
     </style>
 </head>
 <body>
-    <img src="https://img.icons8.com/ios/100/apple.png" class="floating-icon icon1" />
-    <img src="https://img.icons8.com/ios/100/dumbbell.png" class="floating-icon icon2" />
-    <img src="https://img.icons8.com/ios/100/water-bottle.png" class="floating-icon icon3" />
-    <img src="https://img.icons8.com/ios/100/salad.png" class="floating-icon icon4" />
-    <img src="https://img.icons8.com/ios/100/treadmill.png" class="floating-icon icon5" />
     <h2 class="title">Food Tracker</h2>
     <div class="container">
-        <div>
-            <input type="date" id="dateInput" onchange="setDate()">
-        </div>
+        <input type="date" id="dateInput">
         <div class="progress-container">
             <div class="progress-bar" id="progressBar"></div>
-            <p style="text-align: center;"><span id="calories">0</span> kcal</p>
-            <div class="message"><p class="warning" id="warningMsg">⚠️ <strong>Under Nutritioned</strong><br>Take your food properly</p>
-            <p class="healthy" id="healthyMsg">✅ You are taking your food properly</p></div>
         </div>
-        <button class="meal-btn" onclick="gotobre()">
+        <p><span id="calories">0</span> kcal</p>
+        <p class="message warning" id="warningMsg">⚠️ Under Nutritioned</p>
+        <p class="message healthy" id="healthyMsg" style="display: none;">✅ You're on track!</p>
+        <button class="meal-btn" onclick="navigate('breakfast.html')">
+            <img src="https://img.icons8.com/ios-filled/50/apple.png" alt="Breakfast">
             <span>Breakfast</span>
-            <img src="https://img.icons8.com/ios-filled/50/apple.png" alt="Food Icon">
         </button>
-        <button class="meal-btn" onclick="gotolun()">
+        <button class="meal-btn" onclick="navigate('lunch.html')">
+            <img src="https://img.icons8.com/ios-filled/50/bowl-with-spoon.png" alt="Lunch">
             <span>Lunch</span>
-            <img src="https://img.icons8.com/ios-filled/50/bowl-with-spoon.png" alt="Food Icon">
         </button>
-        <button class="meal-btn" onclick="gotosnck()">
+        <button class="meal-btn" onclick="navigate('snacks.html')">
+            <img src="https://img.icons8.com/ios-filled/50/cookie.png" alt="Snacks">
             <span>Snacks</span>
-            <img src="https://img.icons8.com/?size=100&id=96104&format=png&color=000000" alt="Food Icon">
         </button>
-        <button class="meal-btn" onclick="gotodin()">
+        <button class="meal-btn" onclick="navigate('dinner.html')">
+            <img src="https://img.icons8.com/ios-filled/50/pizza.png" alt="Dinner">
             <span>Dinner</span>
-            <img src="https://img.icons8.com/ios-filled/50/pizza.png" alt="Food Icon">
         </button>
     </div>
     <div class="footer">
-        <img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home Icon">
-        <img src="https://img.icons8.com/ios-filled/50/shop.png" alt="Shop Icon">
+        <a href="index.html">
+            <img src="https://img.icons8.com/ios-filled/50/home.png" alt="Home">
+        </a>
     </div>
     <script>
         let totalCalories = 0;
         const calorieGoal = 3000;
+
         function getStoredCalories() {
-            let breakfastCalories = parseInt(localStorage.getItem("breakfastCalories")) || 0;
-            let lunchCalories = parseInt(localStorage.getItem("lunchCalories")) || 0;
-            let snacksCalories = parseInt(localStorage.getItem("snacksCalories")) || 0;
-            let dinnerCalories = parseInt(localStorage.getItem("dinnerCalories")) || 0;
-            totalCalories = breakfastCalories + lunchCalories + snacksCalories + dinnerCalories;
+            let breakfast = parseInt(localStorage.getItem("breakfastCalories")) || 0;
+            let lunch = parseInt(localStorage.getItem("lunchCalories")) || 0;
+            let snacks = parseInt(localStorage.getItem("snacksCalories")) || 0;
+            let dinner = parseInt(localStorage.getItem("dinnerCalories")) || 0;
+            totalCalories = breakfast + lunch + snacks + dinner;
             document.getElementById("calories").innerText = totalCalories;
-            let progress = (totalCalories / calorieGoal) * 100;
-            document.getElementById("progressBar").style.width = progress + "%";
-            if (totalCalories < 1000) {
-                document.getElementById("warningMsg").style.display = "block";
-                document.getElementById("healthyMsg").style.display = "none";
-            } else {
-                document.getElementById("warningMsg").style.display = "none";
-                document.getElementById("healthyMsg").style.display = "block";
-            }
+            document.getElementById("progressBar").style.width = (totalCalories / calorieGoal) * 100 + "%";
+            document.getElementById("warningMsg").style.display = totalCalories < 1000 ? "block" : "none";
+            document.getElementById("healthyMsg").style.display = totalCalories >= 1000 ? "block" : "none";
+        }
+        function navigate(page) {
+            window.location.href = page;
         }
         window.onload = getStoredCalories;
-        function setDate() {
-            const date = document.getElementById("dateInput").value;
-            document.getElementById("selectedDate").innerText = date;
-            document.getElementById("calendar").style.display = "none";
-        }
-        function gotobre(){
-            window.location.href = "breakfast.html";
-        }
-        function gotolun(){
-            window.location.href = "lunch.html";
-        }
-        function gotosnck(){
-            window.location.href = "snacks.html";
-        }
-        function gotodin(){
-            window.location.href = "dinner.html";
-        }
     </script>
-
 </body>
 </html>
