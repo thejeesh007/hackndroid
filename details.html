@@ -3,227 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enter Your Details</title>
+    <title>My Details</title>
     <style>
-        /* General Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Lato', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
-        /* 🔥 Animated Background */
         body {
+            background: linear-gradient(135deg, #4FACFE, #00F2FE);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(-45deg, #e0f7fa, #b3e5fc, #e3f2fd, #b2dfdb);
-            background-size: 300% 300%;
-            animation: gradientBG 10s infinite ease-in-out;
-            width: 100%;
-            padding: 20px;
+            flex-direction: column;
+            overflow-y: auto;
+            position: relative;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* 🔥 Floating Icons */
-        .floating-icon {
+        /* Floating Background Objects */
+        .floating {
             position: absolute;
-            width: 80px;
-            opacity: 0.6;
-            animation: floatAnimation 6s infinite alternate ease-in-out;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: floatAnimation 5s infinite ease-in-out alternate;
+            filter: blur(7px);
         }
 
-        .icon1 { top: 10%; left: 10%; animation-delay: 0s; }
-        .icon2 { top: 40%; right: 15%; animation-delay: 1s; }
-        .icon3 { bottom: 15%; left: 50%; animation-delay: 2s; }
-        .icon4 { bottom: 35%; right: 20%; animation-delay: 3s; }
-        .icon5 { top: 70%; left: 15%; animation-delay: 4s; }
+        .floating:nth-child(1) { width: 90px; height: 90px; top: 5%; left: 12%; animation-duration: 6s; }
+        .floating:nth-child(2) { width: 60px; height: 60px; bottom: 10%; right: 15%; animation-duration: 8s; }
+        .floating:nth-child(3) { width: 70px; height: 70px; top: 45%; left: 30%; animation-duration: 7s; }
+        .floating:nth-child(4) { width: 100px; height: 100px; top: 25%; right: 5%; animation-duration: 5s; }
+        .floating:nth-child(5) { width: 50px; height: 50px; bottom: 5%; left: 20%; animation-duration: 9s; }
 
         @keyframes floatAnimation {
-            0% { transform: translateY(0px) scale(1); }
-            100% { transform: translateY(-15px) scale(1.1); }
+            0% { transform: translateY(0px); opacity: 0.6; }
+            100% { transform: translateY(-15px); opacity: 0.3; }
         }
 
-        /* 🔥 Glassmorphic Container */
+        /* Container */
         .container {
+            width: 90%;
+            max-width: 420px;
             background: rgba(255, 255, 255, 0.3);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
-            width: 480px;
+            backdrop-filter: blur(15px);
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             text-align: center;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            margin: 50px 0;
+            transition: 0.3s ease-in-out;
         }
 
-        h2 {
-            color: #333;
+        .container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
-            font-size: 26px;
         }
 
-        .input-group {
+        .header h2 {
+            font-size: 24px;
+            color: black;
+            font-weight: 700;
+        }
+
+        .profile-img {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            border: 3px solid black;
+            box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* User Details */
+        .details {
             text-align: left;
-            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.6);
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        .input-group label {
-            font-weight: bold;
-            color: #333;
-            display: block;
-            margin-bottom: 6px;
+        .details p {
             font-size: 16px;
+            margin: 8px 0;
+            font-weight: 400;
+            color: black;
         }
 
-        .input-field {
+        .details span {
+            font-weight: bold;
+            color: #FF5733;
+        }
+
+        /* Sleep Container */
+        .sleep-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .progress-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: conic-gradient(#ff4b5c 290deg, #ddd 290deg);
             display: flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.7);
-            border: 2px solid transparent;
-            border-radius: 10px;
-            padding: 14px;
-            transition: 0.3s;
-            font-size: 16px;
-        }
-
-        .input-field input {
-            width: 100%;
-            border: none;
-            background: transparent;
-            color: #333;
-            font-size: 18px;
-            padding-left: 10px;
-        }
-
-        .input-field img {
-            width: 25px;
-            height: 25px;
-            opacity: 0.8;
-        }
-
-        .input-field:focus-within {
-            border-color: #3498db;
-            box-shadow: 0 0 15px #3498db;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 14px;
-            background: #3498db;
-            color: white;
-            border: none;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
-        }
-
-        .btn:hover {
-            background: #2980b9;
-            transform: scale(1.05);
-        }
-
-        /* 🔥 Bottom Navigation */
-        .bottom-nav {
-            margin-top: 25px;
-            display: flex;
             justify-content: center;
-            background: white;
-            padding: 12px;
-            border-radius: 35px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            gap: 25px;
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            box-shadow: 0px 0px 20px rgba(255, 75, 92, 0.6);
+            animation: pulse 1.8s infinite alternate;
         }
 
-        .bottom-nav img {
-            width: 35px;
-            height: 35px;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .sleep-text {
+            margin-top: 10px;
+            font-size: 18px;
+            color: black;
+            font-weight: bold;
+        }
+
+        /* Footer Icons */
+        .footer {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .footer button {
+            background: none;
+            border: none;
             cursor: pointer;
+            transition: 0.3s;
         }
 
-        @media (max-width: 500px) {
+        .footer img {
+            width: 60px;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+        }
+
+        .footer img:hover {
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(1.15);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
             .container {
                 width: 90%;
-                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating Icons -->
-    <img src="https://img.icons8.com/ios/100/ruler.png" class="floating-icon icon1">
-    <img src="https://img.icons8.com/ios/100/weight.png" class="floating-icon icon2">
-    <img src="https://img.icons8.com/ios/100/apple.png" class="floating-icon icon3">
-    <img src="https://img.icons8.com/ios/100/water-bottle.png" class="floating-icon icon4">
-    <img src="https://img.icons8.com/ios/100/treadmill.png" class="floating-icon icon5">
+    <!-- Floating Background Elements -->
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
 
     <div class="container">
-        <form id="detailsForm">
-            <h2>Enter Your Details</h2>
+        <div class="header">
+            <h2>My Details</h2>
+            <img src="pic.png" alt="Profile Picture" class="profile-img">
+        </div>
 
-            <div class="input-group">
-                <label>Height</label>
-                <div class="input-field">
-                    <input type="text" id="height" placeholder="Enter height (in ft)">
-                    <img src="https://img.icons8.com/ios-filled/50/ruler.png" alt="Height Icon">
-                </div>
-            </div>
+        <!-- User Details -->
+        <div class="details">
+            <p>Name - <span id="name">Shruti</span></p>
+            <p>Steps Covered - <span id="steps">6000</span></p>
+            <p>Calories Burnt - <span id="calories">1470</span> kcal</p>
+            <p>Height - <span>6 ft</span></p>
+            <p>Weight - <span id="weight">99</span> Kg</p>
+            <p>Age - <span>19</span></p>
+            <p>Phone - <span>93*****10</span></p>
+        </div>
 
-            <div class="input-group">
-                <label>Weight</label>
-                <div class="input-field">
-                    <input type="text" id="weight" placeholder="Enter weight (in kg)">
-                    <img src="https://img.icons8.com/ios-filled/50/weight.png" alt="Weight Icon">
-                </div>
-            </div>
+        <!-- Sleep Hours -->
+        <div class="sleep-container">
+            <div class="progress-circle">13h</div>
+            <p class="sleep-text">Hours Slept <span>13</span></p>
+        </div>
+    </div>
 
-            <div class="input-group">
-                <label>Age</label>
-                <div class="input-field">
-                    <input type="number" id="age" placeholder="Enter age">
-                    <img src="https://img.icons8.com/ios-filled/50/calendar.png" alt="Age Icon">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label>Phone</label>
-                <div class="input-field">
-                    <input type="tel" id="phone" placeholder="Enter phone number" maxlength="10">
-                    <img src="https://img.icons8.com/ios-filled/50/phone.png" alt="Phone Icon">
-                </div>
-            </div>
-
-            <button type="submit" class="btn">Done</button>
-        </form>
+    <!-- Footer Navigation -->
+    <div class="footer">
+        <button onclick="goToHome()">
+            <img src="https://img.icons8.com/fluency/50/home.png" alt="Home Icon">
+        </button>
+        <button onclick="goToMenu()">
+            <img src="https://img.icons8.com/fluency/50/shop.png" alt="Shop Icon">
+        </button>
     </div>
 
     <script>
-        document.getElementById("detailsForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            let phone = document.getElementById("phone").value.trim();
-            let phoneRegex = /^[0-9]{10}$/;
+        function goToHome() {
+            window.location.href = "index.html"; 
+        }
 
-            if (!phoneRegex.test(phone)) {
-                alert("Phone number must be exactly 10 digits and contain only numbers.");
-                return;
-            }
-
-            alert("Details submitted successfully!");
-            this.reset();
-            window.location.href = "login.html";
-        });
+        function goToMenu() {
+            window.location.href = "menu.html"; 
+        }
     </script>
-
 </body>
 </html>
+
